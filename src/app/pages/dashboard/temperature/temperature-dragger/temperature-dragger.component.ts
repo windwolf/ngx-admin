@@ -23,7 +23,7 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
 
   @ViewChild('svgRoot', { static: true }) svgRoot: ElementRef;
 
-  @Input() fillColors: string|string[];
+  @Input() fillColors: string | string[];
   @Input() disableArcColor;
   @Input() bottomAngle = 90;
   @Input() arcThickness = 18; // CSS pixels
@@ -33,10 +33,10 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
   @Input() thumbBorderColor;
   @Input() maxLeap = 0.4;
 
-  value = 50;
-  @Output() valueChange = new EventEmitter<Number>();
-  @Input('value') set setValue(value) {
-    this.value = value;
+  value_ = 50;
+  @Output() valueChange = new EventEmitter<number>();
+  @Input() set value(value) {
+    this.value_ = value;
   }
 
   @Input() min = 0; // min output value
@@ -79,9 +79,10 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
     arcTranslateStr: 'translate(0, 0)',
     clipPathStr: '',
     gradArcs: [],
-    nonSelectedArc: {},
+    nonSelectedArc: { color: "",d: "" },
     thumbPosition: { x: 0, y: 0 },
     blurRadius: 15,
+    
   };
 
   private isMouseDown = false;
@@ -169,8 +170,8 @@ export class TemperatureDraggerComponent implements AfterViewInit, OnChanges {
 
 
     const circleFactor = this.bottomAngleRad <= Math.PI
-      ? ( 2 / (1 + Math.cos(halfAngle)) )
-      : ( 2 * Math.sin(halfAngle) / (1 + Math.cos(halfAngle)) );
+      ? (2 / (1 + Math.cos(halfAngle)))
+      : (2 * Math.sin(halfAngle) / (1 + Math.cos(halfAngle)));
     if (circleFactor > svgAreaFactor) {
       if (this.bottomAngleRad > Math.PI) {
         this.radius = (VIEW_BOX_SIZE - 2 * thumbMargin) / (2 * Math.sin(halfAngle));

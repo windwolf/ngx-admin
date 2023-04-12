@@ -13,12 +13,12 @@ export class TrafficRevealCardComponent implements OnDestroy {
   private alive = true;
 
   trafficBarData: TrafficBar;
-  trafficListData: TrafficList;
+  trafficListData: TrafficList[];
   revealed = false;
   period: string = 'week';
 
   constructor(private trafficListService: TrafficListData,
-              private trafficBarService: TrafficBarData) {
+    private trafficBarService: TrafficBarData) {
     this.getTrafficFrontCardData(this.period);
     this.getTrafficBackCardData(this.period);
   }
@@ -36,7 +36,7 @@ export class TrafficRevealCardComponent implements OnDestroy {
 
   getTrafficBackCardData(period: string) {
     this.trafficBarService.getTrafficBarData(period)
-      .pipe(takeWhile(() => this.alive ))
+      .pipe(takeWhile(() => this.alive))
       .subscribe(trafficBarData => {
         this.trafficBarData = trafficBarData;
       });

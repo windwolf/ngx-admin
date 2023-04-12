@@ -142,6 +142,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
         title: 'Chat',
         link: '/pages/extra-components/chat',
       },
+      {
+        title: 'from-inputs',
+        link: '/pages/extra-components/from-inputs',
+      },
     ],
   },
   {

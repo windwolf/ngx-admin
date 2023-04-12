@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of as observableOf,  Observable } from 'rxjs';
+import { of as observableOf, Observable } from 'rxjs';
 import { PeriodsService } from './periods.service';
 import { TrafficList, TrafficListData } from '../data/traffic-list';
 
@@ -79,7 +79,7 @@ export class TrafficListService extends TrafficListData {
     }, []);
   }
 
-  getTrafficListData(period: string): Observable<TrafficList> {
+  getTrafficListData(period: string): Observable<TrafficList[]> {
     return observableOf(this.data[period]);
   }
 }

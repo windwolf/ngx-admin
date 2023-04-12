@@ -2,6 +2,7 @@ import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { NbThemeService } from '@nebular/theme';
 import { delay, takeWhile } from 'rxjs/operators';
 import { LayoutService } from '../../../../@core/utils/layout.service';
+import { NgxLegendItemColor } from '../../legend-chart/enum.legend-item-color';
 
 
 @Component({
@@ -16,11 +17,11 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
   @Input() value: number;
 
   option: any = {};
-  chartLegend: { iconColor: string; title: string }[];
+  chartLegend: { iconColor: NgxLegendItemColor; title: string }[];
   echartsIntance: any;
 
   constructor(private theme: NbThemeService,
-              private layoutService: LayoutService) {
+    private layoutService: LayoutService) {
     this.layoutService.onSafeChangeLayoutSize()
       .pipe(
         takeWhile(() => this.alive),
@@ -40,7 +41,7 @@ export class ECommerceVisitorsStatisticsComponent implements AfterViewInit, OnDe
 
         this.setOptions(variables);
         this.setLegendItems(visitorsPieLegend);
-    });
+      });
   }
 
   setLegendItems(visitorsPieLegend) {

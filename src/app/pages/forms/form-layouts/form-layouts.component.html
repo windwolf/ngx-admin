@@ -5,8 +5,18 @@
       <nb-card-body>
         <form class="form-inline">
           <input type="text" nbInput fullWidth placeholder="Jane Doe">
-          <input type="text" nbInput fullWidth placeholder="Email">
+          <nb-form-field>
+            <label nbPrefix>Email</label>
+            <input type="text" nbInput fullWidth placeholder="Email">
+            <button nbSuffix nbButton ghost>
+              <nb-icon [icon]="'eye-outline'" pack="eva" [attr.aria-label]="'show password'">
+              </nb-icon>
+            </button>
+          </nb-form-field>
+
+
           <nb-checkbox>Remember me</nb-checkbox>
+          <button type="submit" nbButton status="primary">Submit</button>
           <button type="submit" nbButton status="primary">Submit</button>
         </form>
       </nb-card-body>

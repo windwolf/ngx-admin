@@ -3,6 +3,7 @@ import { NbThemeService } from '@nebular/theme';
 import { takeWhile } from 'rxjs/operators';
 
 import { TrafficList } from '../../../../@core/data/traffic-list';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ngx-traffic-front-card',
@@ -13,7 +14,7 @@ export class TrafficFrontCardComponent implements OnDestroy {
 
   private alive = true;
 
-  @Input() frontCardData: TrafficList;
+  @Input() frontCardData: TrafficList[];
 
   currentTheme: string;
 
@@ -22,7 +23,7 @@ export class TrafficFrontCardComponent implements OnDestroy {
       .pipe(takeWhile(() => this.alive))
       .subscribe(theme => {
         this.currentTheme = theme.name;
-    });
+      });
   }
 
   trackByDate(_, item) {
