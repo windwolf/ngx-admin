@@ -8,7 +8,9 @@ import { Component } from '@angular/core';
         Tiny MCE
       </nb-card-header>
       <nb-card-body>
-        <ngx-tiny-mce></ngx-tiny-mce>
+      <editor
+        [init]="{ plugins: 'link table' }"
+      ></editor>
       </nb-card-body>
     </nb-card>
   `,
